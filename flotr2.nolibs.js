@@ -937,7 +937,7 @@ Text.prototype = {
     var div = D.create('div');
 
     D.setStyles(div, { 'position' : 'absolute', 'top' : '-10000px' });
-    D.setStyles(div, {'top' : '0px', 'left' : '-10000px' }); // EspoCRM fix line
+    D.setStyles(div, {'top' : '0px', 'left' : '-10000px' }); // ForcellCRM fix line
     D.insert(div, '<div style="'+style+'" class="'+className+' flotr-dummy-div">' + text + '</div>');
     D.insert(this.o.element, div);
 
@@ -1219,7 +1219,7 @@ Graph.prototype = {
       context.translate(this.plotOffset.left, this.plotOffset.top);
 
       for (i = 0; i < this.series.length; i++) {
-        this.series[i].index = i; // EspoCRM fix stacked
+        this.series[i].index = i; // ForcellCRM fix stacked
         if (!this.series[i].hide) this.drawSeries(this.series[i]);
       }
 
@@ -1238,7 +1238,7 @@ Graph.prototype = {
 
     function drawChart (series, typeKey) {
       var options = this.getOptions(series, typeKey);
-      options.index = series.index; // EspoCRM fix stacked
+      options.index = series.index; // ForcellCRM fix stacked
       this[typeKey].draw(options);
     }
 
@@ -1531,7 +1531,7 @@ Graph.prototype = {
         this.lastMousePos = pos;
       }, this));
 
-    }// else { EspoCRM fix
+    }// else { ForcellCRM fix
       this.
         observe(this.overlay, 'mousedown', _.bind(this.mouseDownHandler, this)).
         observe(el, 'mousemove', _.bind(this.mouseMoveHandler, this)).
@@ -1539,7 +1539,7 @@ Graph.prototype = {
         observe(el, 'mouseout', function (e) {
           E.fire(el, 'flotr:mouseout', e);
         });
-    //} EspoCRM fix
+    //} ForcellCRM fix
   },
 
   /**
@@ -2488,7 +2488,7 @@ Flotr.addType('bars', {
 
     for (i = 0; i < data.length; i++) {
 
-      geometry = this.getBarGeometry(data[i][0], data[i][1], options, true); // EspoCRM fix stacked
+      geometry = this.getBarGeometry(data[i][0], data[i][1], options, true); // ForcellCRM fix stacked
       if (geometry === null) continue;
 
       left    = geometry.left;
@@ -2516,7 +2516,7 @@ Flotr.addType('bars', {
     }
   },
 
-  getBarGeometry : function (x, y, options, fillStack) { // EspoCRM fix stacked
+  getBarGeometry : function (x, y, options, fillStack) { // ForcellCRM fix stacked
 
     var
       horizontal    = options.horizontal,
@@ -2545,7 +2545,7 @@ Flotr.addType('bars', {
       stackValue          = yValue > 0 ? stack.positive : stack.negative;
       stackOffset         = stackValue[xValue] || stackOffset;
 
-      // EspoCRM fix stacked start
+      // ForcellCRM fix stacked start
       if (fillStack) {
         this.stackData = this.stackData || {};
         this.stackData[options.index] = this.stackData[options.index] || {};
@@ -2555,9 +2555,9 @@ Flotr.addType('bars', {
             stackOffset = this.stackData[options.index][xValue];
           }
       }
-      // EspoCRM fix stacked end
+      // ForcellCRM fix stacked end
 
-      if (fillStack) // EspoCRM fix stacked
+      if (fillStack) // ForcellCRM fix stacked
       stackValue[xValue]  = stackOffset + yValue;
     }
 
@@ -2573,7 +2573,7 @@ Flotr.addType('bars', {
     // if (right < xa.min || left > xa.max || top < ya.min || bottom > ya.max) continue;
 
     return (x === null || y === null) ? null : {
-      bottom: bottom, // EspoCRM fix stacked
+      bottom: bottom, // ForcellCRM fix stacked
       x         : xValue,
       y         : yValue,
       xScale    : xScale,
@@ -2605,7 +2605,7 @@ Flotr.addType('bars', {
         // Height:
         (
           // Positive Bars:
-          // EspoCRM fix stacked start
+          // ForcellCRM fix stacked start
           (
             (
               options.stacked && !options.horizontal &&
@@ -2618,7 +2618,7 @@ Flotr.addType('bars', {
               hitGeometry.yScale(hitGeometry.y) < geometry.top
             )
           ) || !options.stacked &&
-          // EspoCRM fix stacked end
+          // ForcellCRM fix stacked end
           (height > 0 && height < geometry.y) ||
           // Negative Bars:
           (height < 0 && height > geometry.y)
@@ -2629,7 +2629,7 @@ Flotr.addType('bars', {
         n.x = data[i][0];
         n.y = data[i][1];
 
-        // EspoCRM fix stacked start
+        // ForcellCRM fix stacked start
         if (options.stacked) {
           if (!options.horizontal) {
             n.y = options.yInverse(geometry.top);
@@ -2639,7 +2639,7 @@ Flotr.addType('bars', {
             n.bottom = geometry.bottom;
           }
         }
-        // EspoCRM fix stacked end
+        // ForcellCRM fix stacked end
 
         n.index = i;
         n.seriesIndex = options.index;
@@ -2667,24 +2667,24 @@ Flotr.addType('bars', {
     context.beginPath();
     context.moveTo(left, top + height);
 
-    // EspoCRM fix stacked start
+    // ForcellCRM fix stacked start
     if (options.stacked) {
       context.moveTo(left, options.args.bottom);
     }
-    // EspoCRM fix stacked end
+    // ForcellCRM fix stacked end
 
     context.lineTo(left, top);
     context.lineTo(left + width, top);
 
-    if (!options.stacked) // EspoCRM fix stacked
+    if (!options.stacked) // ForcellCRM fix stacked
     context.lineTo(left + width, top + height);
 
-    // EspoCRM fix stacked start
+    // ForcellCRM fix stacked start
     if (options.stacked) {
       context.lineTo(left + width, options.args.bottom);
       context.lineTo(left, options.args.bottom);
     }
-    // EspoCRM fix stacked end
+    // ForcellCRM fix stacked end
 
     if (options.fill) {
       context.fillStyle = options.fillStyle;
@@ -4482,11 +4482,11 @@ Flotr.addPlugin('hit', {
         );
       }
       D.hide(this.mouseTrack);
-      // EspoCRM fix start
+      // ForcellCRM fix start
       if (this.options && this.options.mouse && this.options.mouse.cursorPointer) {
         $(this.el).css('cursor', '');
       }
-      // EspoCRM fix end
+      // ForcellCRM fix end
       this.prevHit = null;
     }
     octx.restore();
@@ -4688,22 +4688,22 @@ Flotr.addPlugin('hit', {
     if (_.isNull(content) || _.isUndefined(content)) {
       D.hide(mouseTrack);
 
-      // EspoCRM fix start
+      // ForcellCRM fix start
       if (this.options && this.options.mouse && this.options.mouse.cursorPointer) {
         $(this.el).css('cursor', '');
       }
-      // EspoCRM fix end
+      // ForcellCRM fix end
 
       return;
     } else {
       mouseTrack.innerHTML = content;
       D.show(mouseTrack);
 
-      // EspoCRM fix start
+      // ForcellCRM fix start
       if (this.options && this.options.mouse && this.options.mouse.cursorPointer) {
         $(this.el).css('cursor', 'pointer');
       }
-      // EspoCRM fix end
+      // ForcellCRM fix end
     }
 
     // Positioning
@@ -4732,7 +4732,7 @@ Flotr.addPlugin('hit', {
           x: (this.plotWidth)/2,
           y: (this.plotHeight)/2
         },
-        radius = (Math.min(this.canvasWidth, this.canvasHeight) * s.pie.sizeRatio), // EspoCRM fix line
+        radius = (Math.min(this.canvasWidth, this.canvasHeight) * s.pie.sizeRatio), // ForcellCRM fix line
         bisection = n.sAngle<n.eAngle ? (n.sAngle + n.eAngle) / 2: (n.sAngle + n.eAngle + 2* Math.PI) / 2;
 
       pos += 'bottom:' + (m - top - center.y - Math.sin(bisection) * radius/2 + this.canvasHeight) + 'px;top:auto;';
@@ -4741,7 +4741,7 @@ Flotr.addPlugin('hit', {
     // Default
     } else {
 
-      // EspoCRM fix start
+      // ForcellCRM fix start
       if (n.mouse.autoPositionHorizontal) {
 
         if (n.xaxis.d2p(n.x) > this.plotWidth * 2 / 3) {
@@ -4797,7 +4797,7 @@ Flotr.addPlugin('hit', {
           p += 'e';
         }
       }
-      // EspoCRM fix end
+      // ForcellCRM fix end
 
       pos += 'top:';
       if (/n/.test(p)) pos += (oTop - m + top + n.yaxis.d2p(n.y) - size.height);
@@ -5193,7 +5193,7 @@ Flotr.addPlugin('labels', {
         style, offset;
 
       style = {
-        size: axis.options.fontSize || Flotr.defaultOptions.fontSize, // EspoCRM fix
+        size: axis.options.fontSize || Flotr.defaultOptions.fontSize, // ForcellCRM fix
         color        : axis.options.color || options.grid.color,
         angle        : Flotr.toRad(axis.options.labelsAngle),
         textBaseline : 'middle'

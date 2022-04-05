@@ -123,11 +123,11 @@ Flotr.addPlugin('hit', {
         );
       }
       D.hide(this.mouseTrack);
-      // EspoCRM fix start
+      // ForcellCRM fix start
       if (this.options && this.options.mouse && this.options.mouse.cursorPointer) {
         $(this.el).css('cursor', '');
       }
-      // EspoCRM fix end
+      // ForcellCRM fix end
       this.prevHit = null;
     }
     octx.restore();
@@ -329,22 +329,22 @@ Flotr.addPlugin('hit', {
     if (_.isNull(content) || _.isUndefined(content)) {
       D.hide(mouseTrack);
 
-      // EspoCRM fix start
+      // ForcellCRM fix start
       if (this.options && this.options.mouse && this.options.mouse.cursorPointer) {
         $(this.el).css('cursor', '');
       }
-      // EspoCRM fix end
+      // ForcellCRM fix end
 
       return;
     } else {
       mouseTrack.innerHTML = content;
       D.show(mouseTrack);
 
-      // EspoCRM fix start
+      // ForcellCRM fix start
       if (this.options && this.options.mouse && this.options.mouse.cursorPointer) {
         $(this.el).css('cursor', 'pointer');
       }
-      // EspoCRM fix end
+      // ForcellCRM fix end
     }
 
     // Positioning
@@ -373,7 +373,7 @@ Flotr.addPlugin('hit', {
           x: (this.plotWidth)/2,
           y: (this.plotHeight)/2
         },
-        radius = (Math.min(this.canvasWidth, this.canvasHeight) * s.pie.sizeRatio), // EspoCRM fix line
+        radius = (Math.min(this.canvasWidth, this.canvasHeight) * s.pie.sizeRatio), // ForcellCRM fix line
         bisection = n.sAngle<n.eAngle ? (n.sAngle + n.eAngle) / 2: (n.sAngle + n.eAngle + 2* Math.PI) / 2;
 
       pos += 'bottom:' + (m - top - center.y - Math.sin(bisection) * radius/2 + this.canvasHeight) + 'px;top:auto;';
@@ -382,7 +382,7 @@ Flotr.addPlugin('hit', {
     // Default
     } else {
 
-      // EspoCRM fix start
+      // ForcellCRM fix start
       if (n.mouse.autoPositionHorizontal) {
 
         if (n.xaxis.d2p(n.x) > this.plotWidth * 2 / 3) {
@@ -438,7 +438,7 @@ Flotr.addPlugin('hit', {
           p += 'e';
         }
       }
-      // EspoCRM fix end
+      // ForcellCRM fix end
 
       pos += 'top:';
       if (/n/.test(p)) pos += (oTop - m + top + n.yaxis.d2p(n.y) - size.height);

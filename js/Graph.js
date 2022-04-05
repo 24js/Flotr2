@@ -244,7 +244,7 @@ Graph.prototype = {
       context.translate(this.plotOffset.left, this.plotOffset.top);
 
       for (i = 0; i < this.series.length; i++) {
-        this.series[i].index = i; // EspoCRM fix stacked
+        this.series[i].index = i; // ForcellCRM fix stacked
         if (!this.series[i].hide) this.drawSeries(this.series[i]);
       }
 
@@ -263,7 +263,7 @@ Graph.prototype = {
 
     function drawChart (series, typeKey) {
       var options = this.getOptions(series, typeKey);
-      options.index = series.index; // EspoCRM fix stacked
+      options.index = series.index; // ForcellCRM fix stacked
       this[typeKey].draw(options);
     }
 
@@ -556,7 +556,7 @@ Graph.prototype = {
         this.lastMousePos = pos;
       }, this));
 
-    }// else { EspoCRM fix
+    }// else { ForcellCRM fix
       this.
         observe(this.overlay, 'mousedown', _.bind(this.mouseDownHandler, this)).
         observe(el, 'mousemove', _.bind(this.mouseMoveHandler, this)).
@@ -564,7 +564,7 @@ Graph.prototype = {
         observe(el, 'mouseout', function (e) {
           E.fire(el, 'flotr:mouseout', e);
         });
-    //} EspoCRM fix
+    //} ForcellCRM fix
   },
 
   /**

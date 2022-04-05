@@ -85,7 +85,7 @@ Flotr.addPlugin('labels', {
         style, offset;
 
       style = {
-        size: axis.options.fontSize || Flotr.defaultOptions.fontSize, // EspoCRM fix
+        size: axis.options.fontSize || Flotr.defaultOptions.fontSize, // ForcellCRM fix
         color        : axis.options.color || options.grid.color,
         angle        : Flotr.toRad(axis.options.labelsAngle),
         textBaseline : 'middle'
